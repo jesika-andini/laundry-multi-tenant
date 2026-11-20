@@ -8,7 +8,7 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-     <?php $__env->slot('title', null, []); ?> Cari Laundry — LaundryHub <?php $__env->endSlot(); ?>
+     <?php $__env->slot('title', null, []); ?> Cari Laundry — LaundryMap <?php $__env->endSlot(); ?>
 
     <?php
         $supportPhone = '0812-3456-7890';
@@ -201,8 +201,8 @@
                                 class="mt-3 h-1.5 w-full cursor-pointer appearance-none rounded-full bg-slate-200 accent-blue-600"
                             >
                             <div class="mt-1.5 flex items-center justify-between text-[10px] font-semibold text-slate-400">
-                                <span>Rp6.000</span>
-                                <span>Rp<?php echo e(number_format((int) (($maxPriceOption + 6000) / 2), 0, ',', '.')); ?></span>
+                                <span>Rp4.000</span>
+                                <span>Rp<?php echo e(number_format((int) (($maxPriceOption + 4000) / 2), 0, ',', '.')); ?></span>
                                 <span>Rp<?php echo e(number_format($maxPriceOption, 0, ',', '.')); ?>+</span>
                             </div>
                         </div>
@@ -235,7 +235,6 @@
                     <div class="flex flex-wrap gap-3 px-4 py-3 text-[10px] font-semibold text-slate-500">
                         <span class="inline-flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span>Buka Sekarang</span>
                         <span class="inline-flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-rose-500"></span>Tutup</span>
-                        <span class="inline-flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-blue-600"></span>Antar Jemput</span>
                     </div>
                 </div>
             </aside>

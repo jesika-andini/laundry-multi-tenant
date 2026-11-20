@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Livewire\Checkout;
 use App\Livewire\CustomerLogin;
 use App\Livewire\CustomerRegister;
 use App\Livewire\LaundrySearch;
 use App\Livewire\PartnerRegistration;
+use App\Livewire\TenantDetail;
 use App\Modules\Account\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +15,14 @@ Route::get('/', HomeController::class)->name('customer.home');
 
 // Halaman pencarian & direktori laundry dikelola oleh komponen Livewire.
 Route::get('/layanan', LaundrySearch::class)->name('customer.services');
+
+// Profil mitra beserta katalog layanan dan ringkasan pesanan.
+Route::get('/laundry/{tenant}', TenantDetail::class)->name('customer.tenant.show');
+
+// Checkout membutuhkan akun pelanggan yang sudah masuk.
+Route::get('/checkout/{tenant}', Checkout::class)
+    ->middleware('auth')
+    ->name('customer.checkout');
 
 // Alias URL umum agar tautan lama /login dan /register tetap terhubung.
 Route::redirect('/login', '/masuk')->name('login');

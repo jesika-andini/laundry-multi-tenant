@@ -249,7 +249,7 @@
                                         {{ $featuredTenant?->address ?? 'Lokasi mitra' }}
                                     </p>
                                 </div>
-                                <a href="{{ route('customer.services', array_filter(['lokasi' => $featuredTenant?->name])) }}" class="rounded-lg bg-blue-600 px-3.5 py-2 text-xs font-bold text-white transition hover:bg-blue-700">Lihat</a>
+                                <a href="{{ $featuredTenant ? route('customer.tenant.show', $featuredTenant) : route('customer.services') }}" class="rounded-lg bg-blue-600 px-3.5 py-2 text-xs font-bold text-white transition hover:bg-blue-700">Lihat</a>
                             </div>
                         </article>
                     </div>
@@ -311,7 +311,7 @@
                         <span class="text-[10px] font-bold uppercase tracking-wide text-slate-400">Langkah 04</span>
                     </div>
                     <h3 class="mt-4 text-sm font-extrabold text-slate-900">Bayar Aman</h3>
-                    <p class="mt-2 text-xs leading-5 text-slate-500">Konfirmasi timbangan aktual via notifikasi digital, lalu bayar non-tunai dengan QRIS, transfer bank, atau e-wallet.</p>
+                    <p class="mt-2 text-xs leading-5 text-slate-500">Konfirmasi timbangan aktual via notifikasi digital, lalu bayar non-tunai dengan transfer bank atau E-wallet.</p>
                 </article>
 
                 <article class="group rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-950/5">
@@ -401,7 +401,7 @@
                                             <p class="mt-0.5 text-sm font-bold text-slate-500">Hubungi mitra</p>
                                         @endif
                                     </div>
-                                    <a href="{{ route('customer.services', ['lokasi' => $tenant->name]) }}" class="rounded-lg bg-blue-600 px-3.5 py-2 text-[11px] font-bold text-white shadow-sm transition hover:bg-blue-700">Lihat Laundry</a>
+                                    <a href="{{ route('customer.tenant.show', $tenant) }}" class="rounded-lg bg-blue-600 px-3.5 py-2 text-[11px] font-bold text-white shadow-sm transition hover:bg-blue-700">Lihat Laundry</a>
                                 </div>
                             </div>
                         </article>
@@ -482,7 +482,7 @@
                             Paket Tenant Map
                         </h3>
                         <ul class="mt-4 space-y-2.5 text-xs text-blue-50/90">
-                            <li class="flex items-center gap-2"><span class="grid h-4 w-4 place-items-center rounded-full bg-white/15"><svg class="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span>Penerimaan Pembayaran QRIS instan</li>
+                            <li class="flex items-center gap-2"><span class="grid h-4 w-4 place-items-center rounded-full bg-white/15"><svg class="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span>Penerimaan Pembayaran Transfer Bank atau E-wallet</li>
                             <li class="flex items-center gap-2"><span class="grid h-4 w-4 place-items-center rounded-full bg-white/15"><svg class="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span>Notifikasi Otomatis ke Pelanggan</li>
                             <li class="flex items-center gap-2"><span class="grid h-4 w-4 place-items-center rounded-full bg-white/15"><svg class="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span>Laporan Omzet Harian &amp; Stok Detergen</li>
                         </ul>
@@ -577,7 +577,6 @@
                     <ul class="mt-4 space-y-3 text-xs text-slate-500">
                         <li><a href="{{ route('customer.services') }}" class="transition hover:text-blue-600">Katalog &amp; Layanan</a></li>
                         <li><a href="{{ route('customer.services') }}" class="transition hover:text-blue-600">Cuci Karpet &amp; Bed Cover</a></li>
-                        <li><a href="{{ route('customer.services') }}" class="transition hover:text-blue-600">Antar Jemput Ekspres</a></li>
                         <li><a href="{{ route('customer.services') }}" class="transition hover:text-blue-600">Lacak Langganan Kas</a></li>
                     </ul>
                 </div>
@@ -586,7 +585,6 @@
                     <h3 class="text-xs font-extrabold uppercase tracking-[0.15em] text-slate-900">Mitra &amp; Tenant</h3>
                     <ul class="mt-4 space-y-3 text-xs text-slate-500">
                         <li><a href="{{ route('customer.partner.register') }}" class="transition hover:text-blue-600">Portal Pemilik Outlet</a></li>
-                        <li><a href="{{ route('customer.services') }}" class="transition hover:text-blue-600">Aplikasi POS Kasir</a></li>
                         <li><a href="{{ route('customer.partner.register') }}" class="transition hover:text-blue-600">Pendaftaran Outlet Baru</a></li>
                         <li><a href="{{ route('customer.services') }}" class="transition hover:text-blue-600">Standarisasi SOP</a></li>
                     </ul>

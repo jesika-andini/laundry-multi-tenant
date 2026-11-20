@@ -14,7 +14,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 
 #[Layout('components.layouts.customer')]
-#[Title('Cari Laundry — LaundryHub')]
+#[Title('Cari Laundry — LaundryMap')]
 class LaundrySearch extends Component
 {
     use WithPagination;
@@ -162,7 +162,7 @@ class LaundrySearch extends Component
         return view('livewire.laundry-search', [
             'tenants' => $tenants,
             'serviceFilters' => $serviceFilters,
-            'areaName' => $this->location !== '' ? $this->location : 'Jakarta Selatan',
+            'areaName' => $this->location !== '' ? $this->location : 'Banyuwangi',
         ]);
     }
 }

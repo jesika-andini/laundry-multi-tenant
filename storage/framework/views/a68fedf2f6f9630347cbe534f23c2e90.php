@@ -6,7 +6,7 @@
                     <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
                 </span>
                 <span class="min-w-0 flex-1">
-                    <span class="block text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400">Lokasi / Area Kamu</span>
+                    <span class="block text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400">Lokasi / Area Banyuwangi</span>
                     <input wire:model="location" placeholder="Ketapang, Banyuwangi" class="mt-0.5 w-full border-0 bg-transparent p-0 text-sm font-semibold text-slate-800 placeholder:font-medium placeholder:text-slate-400 focus:outline-none focus:ring-0">
                 </span>
                 <button type="button" class="shrink-0 text-slate-400" title="Gunakan lokasi saya">

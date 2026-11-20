@@ -9,7 +9,7 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 
 #[Layout('components.layouts.customer')]
-#[Title('Daftar Akun — LaundryHub')]
+#[Title('Daftar Akun — LaundryMap')]
 class CustomerRegister extends Component
 {
     public string $name = '';

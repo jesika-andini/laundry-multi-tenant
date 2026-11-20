@@ -85,7 +85,7 @@
 
                                     <div class="sm:col-span-2">
                                         <label for="partner-description" class="mb-1.5 block text-xs font-bold text-slate-700">Deskripsi &amp; Layanan <span class="font-normal text-slate-400">(opsional)</span></label>
-                                        <textarea id="partner-description" wire:model.blur="description" rows="3" maxlength="1000" placeholder="Contoh: Cuci kiloan, cuci setrika, bed cover, antar jemput area Tebet." class="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm font-medium text-slate-800 placeholder:text-slate-400 focus:border-blue-400 focus:bg-white focus:outline-none focus:ring-0"></textarea>
+                                        <textarea id="partner-description" wire:model.blur="description" rows="3" maxlength="1000" placeholder="Contoh: Cuci kiloan, cuci setrika, bed cover." class="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm font-medium text-slate-800 placeholder:text-slate-400 focus:border-blue-400 focus:bg-white focus:outline-none focus:ring-0"></textarea>
                                         @error('description') <p class="mt-1 text-[11px] font-semibold text-red-600">{{ $message }}</p> @enderror
                                     </div>
                                 </div>
@@ -144,7 +144,7 @@
                         <h2 class="mt-4 text-xl font-extrabold leading-snug">Kenapa bergabung jadi mitra?</h2>
                         <ul class="mt-4 space-y-3 text-xs text-blue-50/90">
                             @foreach ([
-                                'Penerimaan pembayaran QRIS instan',
+                                'Penerimaan pembayaran Transfer Bank atau E-wallet',
                                 'Notifikasi otomatis ke pelanggan',
                                 'Laporan omzet harian & stok detergen',
                                 'Outlet tampil di direktori LaundryMap',

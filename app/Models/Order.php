@@ -17,18 +17,32 @@ class Order extends Model
         'service_id',
         'order_code',
         'weight',
-        'total',
-        'payment_status',
+        'total_price',
+        'customer_note',
         'status',
+        'payment_method',
+        'payment_status',
         'pickup_type',
+        'pickup_at',
+        'courier',
         'address',
+        'delivery_fee',
+        'discount',
+        'platform_fee',
+        'voucher_code',
+        'total',
     ];
 
     protected function casts(): array
     {
         return [
             'weight' => 'decimal:2',
+            'total_price' => 'decimal:2',
+            'delivery_fee' => 'decimal:2',
+            'discount' => 'decimal:2',
+            'platform_fee' => 'decimal:2',
             'total' => 'decimal:2',
+            'pickup_at' => 'datetime',
         ];
     }
 

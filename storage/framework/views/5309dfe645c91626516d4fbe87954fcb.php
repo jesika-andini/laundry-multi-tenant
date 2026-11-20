@@ -23,7 +23,7 @@
 
         <div class="p-7 sm:p-10">
             <p class="text-[10px] font-extrabold uppercase tracking-[0.16em] text-blue-600">Buat Akun Pelanggan</p>
-            <h1 class="mt-2 text-2xl font-extrabold tracking-tight text-slate-950 sm:text-3xl">Daftar akun LaundryHub</h1>
+            <h1 class="mt-2 text-2xl font-extrabold tracking-tight text-slate-950 sm:text-3xl">Daftar akun LaundryMap</h1>
             <p class="mt-2 text-sm text-slate-500">Cukup isi data di bawah, gratis dan cepat.</p>
 
             <form wire:submit="register" class="mt-7 space-y-4">

@@ -11,7 +11,7 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 
 #[Layout('components.layouts.customer')]
-#[Title('Daftar Jadi Mitra — LaundryHub')]
+#[Title('Daftar Jadi Mitra — LaundryMap')]
 class PartnerRegistration extends Component
 {
     public string $name = '';

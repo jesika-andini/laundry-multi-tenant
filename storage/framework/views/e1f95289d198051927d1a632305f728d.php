@@ -20,10 +20,10 @@
                 </p>
                 <h1 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-[2.75rem] sm:leading-[1.1]">
                     Daftarkan Laundry Kamu,<br>
-                    <span class="text-blue-600">Tumbuh Bareng LaundryHub.</span>
+                    <span class="text-blue-600">Tumbuh Bareng LaundryMap.</span>
                 </h1>
                 <p class="mt-4 max-w-xl text-sm leading-7 text-slate-500">
-                    Isi data usaha laundry kamu di bawah ini. Tim LaundryHub akan memverifikasi data dalam 1×24 jam kerja sebelum outlet tampil di halaman pencarian.
+                    Isi data usaha laundry kamu di bawah ini. Tim LaundryMap akan memverifikasi data dalam 1×24 jam kerja sebelum outlet tampil di halaman pencarian.
                 </p>
             </div>
 
@@ -36,7 +36,7 @@
                             </span>
                             <h2 class="mt-5 text-2xl font-extrabold tracking-tight text-slate-950">Pendaftaran Terkirim!</h2>
                             <p class="mt-2 max-w-md text-sm leading-6 text-slate-500">
-                                Terima kasih telah mendaftarkan laundry kamu. Data sedang ditinjau tim LaundryHub. Setelah disetujui, outlet akan otomatis tampil pada halaman Cari Laundry dan kamu bisa masuk ke portal mitra menggunakan email serta password yang tadi dibuat.
+                                Terima kasih telah mendaftarkan laundry kamu. Data sedang ditinjau tim LaundryMap. Setelah disetujui, outlet akan otomatis tampil pada halaman Cari Laundry dan kamu bisa masuk ke portal mitra menggunakan email serta password yang tadi dibuat.
                             </p>
                             <div class="mt-6 flex flex-wrap justify-center gap-3">
                                 <a href="<?php echo e(route('customer.login')); ?>" class="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-700">
@@ -113,7 +113,7 @@ unset($__errorArgs, $__bag); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendB
 
                                     <div class="sm:col-span-2">
                                         <label for="partner-description" class="mb-1.5 block text-xs font-bold text-slate-700">Deskripsi &amp; Layanan <span class="font-normal text-slate-400">(opsional)</span></label>
-                                        <textarea id="partner-description" wire:model.blur="description" rows="3" maxlength="1000" placeholder="Contoh: Cuci kiloan, cuci setrika, bed cover, antar jemput area Tebet." class="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm font-medium text-slate-800 placeholder:text-slate-400 focus:border-blue-400 focus:bg-white focus:outline-none focus:ring-0"></textarea>
+                                        <textarea id="partner-description" wire:model.blur="description" rows="3" maxlength="1000" placeholder="Contoh: Cuci kiloan, cuci setrika, bed cover." class="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm font-medium text-slate-800 placeholder:text-slate-400 focus:border-blue-400 focus:bg-white focus:outline-none focus:ring-0"></textarea>
                                         <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__errorArgs = ['description'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -165,7 +165,7 @@ unset($__errorArgs, $__bag); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendB
 
                             <label class="flex cursor-pointer items-start gap-2.5 rounded-xl bg-slate-50 px-4 py-3">
                                 <input type="checkbox" wire:model="agree" class="mt-0.5 h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500">
-                                <span class="text-[11px] leading-5 text-slate-500">Saya menyetujui <a href="<?php echo e(route('customer.home')); ?>#bantuan" class="font-bold text-blue-600 hover:underline">Syarat &amp; Ketentuan</a> serta <a href="<?php echo e(route('customer.home')); ?>#bantuan" class="font-bold text-blue-600 hover:underline">Kebijakan Privasi</a> LaundryHub.</span>
+                                <span class="text-[11px] leading-5 text-slate-500">Saya menyetujui <a href="<?php echo e(route('customer.home')); ?>#bantuan" class="font-bold text-blue-600 hover:underline">Syarat &amp; Ketentuan</a> serta <a href="<?php echo e(route('customer.home')); ?>#bantuan" class="font-bold text-blue-600 hover:underline">Kebijakan Privasi</a> LaundryMap.</span>
                             </label>
                             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__errorArgs = ['agree'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -200,10 +200,10 @@ unset($__errorArgs, $__bag); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendB
                         <h2 class="mt-4 text-xl font-extrabold leading-snug">Kenapa bergabung jadi mitra?</h2>
                         <ul class="mt-4 space-y-3 text-xs text-blue-50/90">
                             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = [
-                                'Penerimaan pembayaran QRIS instan',
+                                'Penerimaan pembayaran Transfer Bank atau E-wallet',
                                 'Notifikasi otomatis ke pelanggan',
                                 'Laporan omzet harian & stok detergen',
-                                'Outlet tampil di direktori LaundryHub',
+                                'Outlet tampil di direktori LaundryMap',
                             ]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $benefit): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
                                 <li class="flex items-start gap-2">
                                     <span class="mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-white/15">

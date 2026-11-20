@@ -56,7 +56,7 @@
                 <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
                     <label class="flex min-w-0 flex-1 items-center gap-3 rounded-xl px-3 py-2.5">
                         <svg class="h-5 w-5 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-                        <input wire:model="location" placeholder="Ketapang, Banyuwangi" class="w-full min-w-0 border-0 bg-transparent p-0 text-sm font-medium text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-0">
+                        <input wire:model="location" placeholder="Area Banyuwangi" class="w-full min-w-0 border-0 bg-transparent p-0 text-sm font-medium text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-0">
                         @if (filled($location))
                             <button type="button" wire:click="$set('location', '')" class="grid h-6 w-6 shrink-0 place-items-center rounded-full text-slate-400 transition hover:bg-slate-100 hover:text-slate-600" title="Hapus lokasi">
                                 <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
@@ -162,8 +162,8 @@
                                 class="mt-3 h-1.5 w-full cursor-pointer appearance-none rounded-full bg-slate-200 accent-blue-600"
                             >
                             <div class="mt-1.5 flex items-center justify-between text-[10px] font-semibold text-slate-400">
-                                <span>Rp6.000</span>
-                                <span>Rp{{ number_format((int) (($maxPriceOption + 6000) / 2), 0, ',', '.') }}</span>
+                                <span>Rp4.000</span>
+                                <span>Rp{{ number_format((int) (($maxPriceOption + 4000) / 2), 0, ',', '.') }}</span>
                                 <span>Rp{{ number_format($maxPriceOption, 0, ',', '.') }}+</span>
                             </div>
                         </div>
@@ -176,7 +176,7 @@
                     <div class="flex items-center justify-between gap-2 px-4 pt-4">
                         <h2 class="flex items-center gap-1.5 text-xs font-extrabold text-slate-900">
                             <svg class="h-4 w-4 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/></svg>
-                            Peta Sekitar {{ filled($location) ? $location : 'Tebet' }}
+                            Peta Sekitar {{ filled($location) ? $location : 'Banyuwangi' }}
                         </h2>
                         <span class="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-bold text-slate-500">{{ $tenants->total() }} Titik</span>
                     </div>
@@ -195,7 +195,6 @@
                     <div class="flex flex-wrap gap-3 px-4 py-3 text-[10px] font-semibold text-slate-500">
                         <span class="inline-flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span>Buka Sekarang</span>
                         <span class="inline-flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-rose-500"></span>Tutup</span>
-                        <span class="inline-flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-blue-600"></span>Antar Jemput</span>
                     </div>
                 </div>
             </aside>
@@ -304,7 +303,7 @@
                                                 <p class="text-sm font-bold text-slate-500">Hubungi mitra</p>
                                             @endif
                                         </div>
-                                        <a href="{{ route('customer.services', ['lokasi' => $tenant->name]) }}" class="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-[11px] font-bold text-white shadow-sm transition hover:bg-blue-700">
+                                        <a href="{{ route('customer.tenant.show', $tenant) }}" class="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-[11px] font-bold text-white shadow-sm transition hover:bg-blue-700">
                                             Lihat Detail &amp; Menu
                                             <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
                                         </a>

@@ -195,7 +195,6 @@
                     <ul class="mt-4 space-y-3 text-xs text-slate-500">
                         <li><a href="<?php echo e(route('customer.services')); ?>" class="transition hover:text-blue-600">Katalog &amp; Layanan</a></li>
                         <li><a href="<?php echo e(route('customer.services')); ?>" class="transition hover:text-blue-600">Cuci Karpet &amp; Bed Cover</a></li>
-                        <li><a href="<?php echo e(route('customer.services')); ?>" class="transition hover:text-blue-600">Antar Jemput Ekspres</a></li>
                         <li><a href="<?php echo e(route('customer.services')); ?>" class="transition hover:text-blue-600">Lacak Langganan Kas</a></li>
                     </ul>
                 </div>
@@ -204,7 +203,6 @@
                     <h3 class="text-xs font-extrabold uppercase tracking-[0.15em] text-slate-900">Mitra &amp; Tenant</h3>
                     <ul class="mt-4 space-y-3 text-xs text-slate-500">
                         <li><a href="<?php echo e(route('customer.partner.register')); ?>" class="transition hover:text-blue-600">Portal Pemilik Outlet</a></li>
-                        <li><a href="<?php echo e(route('customer.services')); ?>" class="transition hover:text-blue-600">Aplikasi POS Kasir</a></li>
                         <li><a href="<?php echo e(route('customer.partner.register')); ?>" class="transition hover:text-blue-600">Pendaftaran Outlet Baru</a></li>
                         <li><a href="<?php echo e(route('customer.services')); ?>" class="transition hover:text-blue-600">Standarisasi SOP</a></li>
                     </ul>

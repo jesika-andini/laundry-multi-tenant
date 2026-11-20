@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo e($title ?? 'LaundryHub'); ?></title>
+    <title><?php echo e($title ?? 'LaundryMap'); ?></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -49,7 +49,7 @@
         }
 
         $supportPhone = '0812-3456-7890';
-        $supportEmail = 'cs@laundryhub.id';
+        $supportEmail = 'cs@laundrymap.id';
         $ordersUrl = auth()->check() ? route('customer.services') : route('customer.login');
     ?>
 
@@ -195,7 +195,6 @@
                     <ul class="mt-4 space-y-3 text-xs text-slate-500">
                         <li><a href="<?php echo e(route('customer.services')); ?>" class="transition hover:text-blue-600">Katalog &amp; Layanan</a></li>
                         <li><a href="<?php echo e(route('customer.services')); ?>" class="transition hover:text-blue-600">Cuci Karpet &amp; Bed Cover</a></li>
-                        <li><a href="<?php echo e(route('customer.services')); ?>" class="transition hover:text-blue-600">Antar Jemput Ekspres</a></li>
                         <li><a href="<?php echo e(route('customer.services')); ?>" class="transition hover:text-blue-600">Lacak Langganan Kas</a></li>
                     </ul>
                 </div>
@@ -204,7 +203,6 @@
                     <h3 class="text-xs font-extrabold uppercase tracking-[0.15em] text-slate-900">Mitra &amp; Tenant</h3>
                     <ul class="mt-4 space-y-3 text-xs text-slate-500">
                         <li><a href="<?php echo e(route('customer.register')); ?>" class="transition hover:text-blue-600">Portal Pemilik Outlet</a></li>
-                        <li><a href="<?php echo e(route('customer.services')); ?>" class="transition hover:text-blue-600">Aplikasi POS Kasir</a></li>
                         <li><a href="<?php echo e(route('customer.register')); ?>" class="transition hover:text-blue-600">Pendaftaran Outlet Baru</a></li>
                         <li><a href="<?php echo e(route('customer.services')); ?>" class="transition hover:text-blue-600">Standarisasi SOP</a></li>
                     </ul>
@@ -212,7 +210,7 @@
 
                 <div>
                     <h3 class="text-xs font-extrabold uppercase tracking-[0.15em] text-slate-900">Pusat Bantuan</h3>
-                    <p class="mt-4 text-xs leading-6 text-slate-500">Butuh penanganan cepat pesanan Anda? Tim support LaundryHub siap membantu setiap hari.</p>
+                    <p class="mt-4 text-xs leading-6 text-slate-500">Butuh penanganan cepat pesanan Anda? Tim support LaundryMap siap membantu setiap hari.</p>
                     <a href="tel:<?php echo e(preg_replace('/[^0-9+]/', '', $supportPhone)); ?>" class="mt-4 inline-flex items-center gap-2 text-sm font-extrabold text-blue-600 transition hover:text-blue-700">
                         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h4l2 5-2.5 1.5a12 12 0 0 0 5 5L14 14l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 2 7a2 2 0 0 1 2-2Z"/></svg>
                         <?php echo e($supportPhone); ?>
@@ -224,7 +222,7 @@
 
         <div class="border-t border-slate-200">
             <div class="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-5 text-[11px] text-slate-500 sm:flex-row sm:items-center sm:justify-between">
-                <p>&copy; <?php echo e(date('Y')); ?> LaundryHub Indonesia. Hak Cipta Dilindungi.</p>
+                <p>&copy; <?php echo e(date('Y')); ?> LaundryMap Indonesia. Hak Cipta Dilindungi.</p>
                 <div class="flex items-center gap-5">
                     <a href="<?php echo e(route('customer.home')); ?>#bantuan" class="transition hover:text-blue-600">Syarat &amp; Ketentuan</a>
                     <a href="<?php echo e(route('customer.home')); ?>#bantuan" class="transition hover:text-blue-600">Kebijakan Privasi</a>

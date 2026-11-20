@@ -8,7 +8,7 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 
 #[Layout('components.layouts.customer')]
-#[Title('Masuk — LaundryHub')]
+#[Title('Masuk — LaundryMap')]
 class CustomerLogin extends Component
 {
     public string $email = '';
@@ -46,7 +46,7 @@ class CustomerLogin extends Component
             default => route('customer.home'),
         };
 
-        $this->redirect($destination, navigate: true);
+        $this->redirectIntended(default: $destination, navigate: true);
     }
 
     public function render()

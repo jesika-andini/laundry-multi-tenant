@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>LaundryHub — Laundry Lebih Mudah, Tinggal Pilih</title>
+    <title>LaundryMap — Laundry Lebih Mudah, Tinggal Pilih</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -51,7 +51,7 @@
         };
         $ordersUrl = auth()->check() ? route('customer.services') : route('customer.login');
         $supportPhone = $tenants->first(fn ($tenant) => filled($tenant->phone))?->phone ?? '-';
-        $supportEmail = $tenants->first(fn ($tenant) => filled($tenant->email))?->email ?? 'cs@laundryhub.id';
+        $supportEmail = $tenants->first(fn ($tenant) => filled($tenant->email))?->email ?? 'cs@laundrymap.id';
         $laundryPhotos = [
             'https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=900&q=80',
             'https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=900&q=80',
@@ -236,7 +236,7 @@
                                 </div>
                                 <div class="absolute bottom-4 left-4 right-4 text-white">
                                     <p class="text-[10px] font-bold uppercase tracking-[0.22em] text-white/70">Mitra Unggulan</p>
-                                    <h2 class="mt-1 text-2xl font-extrabold tracking-tight"><?php echo e($featuredTenant?->name ?? 'LaundryHub Partner'); ?></h2>
+                                    <h2 class="mt-1 text-2xl font-extrabold tracking-tight"><?php echo e($featuredTenant?->name ?? 'LaundryMap Partner'); ?></h2>
                                     <p class="mt-1 line-clamp-1 text-xs text-white/80"><?php echo e($featuredTenant?->address ?? 'Mitra laundry terpercaya di sekitarmu.'); ?></p>
                                 </div>
                             </div>
@@ -246,7 +246,7 @@
 
                                 </div>
                                 <div class="min-w-0 flex-1">
-                                    <p class="truncate text-sm font-bold text-slate-800"><?php echo e($featuredTenant?->owner ?: ($featuredTenant?->name ?? 'Mitra LaundryHub')); ?></p>
+                                    <p class="truncate text-sm font-bold text-slate-800"><?php echo e($featuredTenant?->owner ?: ($featuredTenant?->name ?? 'Mitra LaundryMap')); ?></p>
                                     <p class="mt-0.5 flex items-center gap-1 text-[11px] text-slate-500">
                                         <svg class="h-3.5 w-3.5 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
                                         <?php echo e($featuredTenant?->address ?? 'Lokasi mitra'); ?>
@@ -360,7 +360,7 @@
                         <span class="text-[10px] font-bold uppercase tracking-wide text-slate-400">Langkah 04</span>
                     </div>
                     <h3 class="mt-4 text-sm font-extrabold text-slate-900">Bayar Aman</h3>
-                    <p class="mt-2 text-xs leading-5 text-slate-500">Konfirmasi timbangan aktual via notifikasi digital, lalu bayar non-tunai dengan QRIS, transfer bank, atau e-wallet.</p>
+                    <p class="mt-2 text-xs leading-5 text-slate-500">Konfirmasi timbangan aktual via notifikasi digital, lalu bayar non-tunai transfer bank atau E-wallet.</p>
                 </article>
 
                 <article class="group rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-950/5">
@@ -431,7 +431,7 @@
 
                                     </span>
                                 </div>
-                                <p class="mt-1 line-clamp-1 text-xs text-slate-500"><?php echo e($tenant->description ?: 'Mitra laundry resmi LaundryHub.'); ?></p>
+                                <p class="mt-1 line-clamp-1 text-xs text-slate-500"><?php echo e($tenant->description ?: 'Mitra laundry resmi LaundryMap.'); ?></p>
 
                                 <div class="mt-3 flex flex-wrap gap-1.5">
                                     <?php $__empty_1 = true; $__currentLoopData = $tenant->services->take(3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
@@ -475,7 +475,7 @@
             <div class="mx-auto max-w-7xl px-5">
                 <div class="mx-auto max-w-2xl text-center">
                     <p class="text-[11px] font-extrabold uppercase tracking-[0.18em] text-blue-600">Solusi Ekosistem Terpadu</p>
-                    <h2 class="mt-2 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">Kenapa Menggunakan LaundryHub?</h2>
+                    <h2 class="mt-2 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">Kenapa Menggunakan LaundryMap?</h2>
                     <p class="mt-3 text-sm leading-6 text-slate-500">Standar operasional modern yang memberikan transparansi penuh untuk konsumen dan kemudahan pengelolaan bagi mitra laundry.</p>
                 </div>
 
@@ -508,7 +508,7 @@
                         <span class="grid h-12 w-12 place-items-center rounded-xl bg-sky-600 text-white shadow-lg shadow-sky-600/20">
                             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v12H8l-4 4V5Z"/><path d="M8 9h8M8 12h5"/></svg>
                         </span>
-                        <h3 class="mt-5 text-base font-extrabold text-slate-950">Notifikasi WhatsApp Live</h3>
+                        <h3 class="mt-5 text-base font-extrabold text-slate-950">Notifikasi Live</h3>
                         <p class="mt-2 text-xs leading-5 text-slate-500">Dapatkan pembaruan instan saat cucian mulai direndam, dikeringkan, disetrika rapi, hingga siap kembali ke tempat Anda.</p>
                     </article>
                 </div>
@@ -529,10 +529,9 @@
                         <h2 class="mt-4 max-w-xl text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-3xl">
                             Punya Usaha Laundry? Gabung Jadi Mitra Tenant &amp; Kelola Bisnis Lebih Modern!
                         </h2>
-                        <p class="mt-3 max-w-xl text-sm leading-6 text-blue-50/85">Dapatkan aplikasi POS kasir gratis, sistem pembukuan digital otomatis, akses ribuan pelanggan di sekitarmu, dan integrasi kurir lokal dalam satu dashboard. Saat ini sudah ada <?php echo e($totalTenants); ?> mitra aktif bersama LaundryHub.</p>
+                        <p class="mt-3 max-w-xl text-sm leading-6 text-blue-50/85">Dapatkan sistem pembukuan digital otomatis, akses ribuan pelanggan di sekitarmu, dan integrasi kurir lokal dalam satu dashboard. Saat ini sudah ada <?php echo e($totalTenants); ?> mitra aktif bersama LaundryMap.</p>
                         <div class="mt-6 flex flex-wrap gap-3">
                             <a href="<?php echo e(route('customer.register')); ?>" class="rounded-xl bg-white px-5 py-3 text-sm font-bold text-blue-700 shadow-lg shadow-blue-950/10 transition hover:-translate-y-0.5 hover:bg-blue-50">Daftar Jadi Mitra Sekarang</a>
-                            <a href="<?php echo e(route('customer.services')); ?>" class="rounded-xl border border-white/30 bg-white/10 px-5 py-3 text-sm font-bold text-white backdrop-blur transition hover:bg-white/15">Pelajari Fitur POS Kasir</a>
                         </div>
                     </div>
 
@@ -544,9 +543,8 @@
                             Paket Tenant Hub
                         </h3>
                         <ul class="mt-4 space-y-2.5 text-xs text-blue-50/90">
-                            <li class="flex items-center gap-2"><span class="grid h-4 w-4 place-items-center rounded-full bg-white/15"><svg class="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span>Aplikasi POS Kasir Web &amp; Android</li>
-                            <li class="flex items-center gap-2"><span class="grid h-4 w-4 place-items-center rounded-full bg-white/15"><svg class="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span>Penerimaan Pembayaran QRIS instan</li>
-                            <li class="flex items-center gap-2"><span class="grid h-4 w-4 place-items-center rounded-full bg-white/15"><svg class="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span>Notifikasi WhatsApp Otomatis ke Pelanggan</li>
+                            <li class="flex items-center gap-2"><span class="grid h-4 w-4 place-items-center rounded-full bg-white/15"><svg class="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span>Penerimaan Pembayaran Transfer Bank atau E-wallet</li>
+                            <li class="flex items-center gap-2"><span class="grid h-4 w-4 place-items-center rounded-full bg-white/15"><svg class="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span>Notifikasi Otomatis ke Pelanggan</li>
                             <li class="flex items-center gap-2"><span class="grid h-4 w-4 place-items-center rounded-full bg-white/15"><svg class="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span>Laporan Omzet Harian &amp; Stok Detergen</li>
                         </ul>
                     </div>
@@ -630,7 +628,6 @@
                     <ul class="mt-4 space-y-3 text-xs text-slate-400">
                         <li><a href="<?php echo e(route('customer.services')); ?>" class="transition hover:text-white">Katalog &amp; Layanan</a></li>
                         <li><a href="<?php echo e(route('customer.services')); ?>" class="transition hover:text-white">Cuci Karpet &amp; Bed Cover</a></li>
-                        <li><a href="<?php echo e(route('customer.services')); ?>" class="transition hover:text-white">Antar Jemput Ekspres</a></li>
                         <li><a href="<?php echo e(route('customer.services')); ?>" class="transition hover:text-white">Lacak Langganan Kas</a></li>
                     </ul>
                 </div>
@@ -639,7 +636,6 @@
                     <h3 class="text-xs font-extrabold uppercase tracking-[0.15em] text-white">Mitra &amp; Tenant</h3>
                     <ul class="mt-4 space-y-3 text-xs text-slate-400">
                         <li><a href="<?php echo e(route('customer.register')); ?>" class="transition hover:text-white">Portal Pemilik Outlet</a></li>
-                        <li><a href="<?php echo e(route('customer.services')); ?>" class="transition hover:text-white">Aplikasi POS Kasir</a></li>
                         <li><a href="<?php echo e(route('customer.register')); ?>" class="transition hover:text-white">Pendaftaran Outlet Baru</a></li>
                         <li><a href="<?php echo e(route('customer.services')); ?>" class="transition hover:text-white">Standarisasi SOP</a></li>
                     </ul>
@@ -647,7 +643,7 @@
 
                 <div>
                     <h3 class="text-xs font-extrabold uppercase tracking-[0.15em] text-white">Pusat Bantuan</h3>
-                    <p class="mt-4 text-xs leading-6 text-slate-400">Butuh penanganan cepat pesanan Anda? Tim support LaundryHub siap membantu setiap hari.</p>
+                    <p class="mt-4 text-xs leading-6 text-slate-400">Butuh penanganan cepat pesanan Anda? Tim support LaundryMap siap membantu setiap hari.</p>
                     <a href="tel:<?php echo e(preg_replace('/[^0-9+]/', '', $supportPhone)); ?>" class="mt-4 inline-flex items-center gap-2 text-sm font-extrabold text-sky-400 transition hover:text-sky-300">
                         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h4l2 5-2.5 1.5a12 12 0 0 0 5 5L14 14l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 2 7a2 2 0 0 1 2-2Z"/></svg>
                         <?php echo e($supportPhone); ?>
@@ -660,7 +656,7 @@
 
         <div class="border-t border-white/10">
             <div class="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-5 text-[11px] text-slate-500 sm:flex-row sm:items-center sm:justify-between">
-                <p>&copy; <?php echo e(date('Y')); ?> LaundryHub Indonesia. Hak Cipta Dilindungi.</p>
+                <p>&copy; <?php echo e(date('Y')); ?> LaundryMap Indonesia. Hak Cipta Dilindungi.</p>
                 <div class="flex items-center gap-5">
                     <a href="#bantuan" class="transition hover:text-slate-300">Syarat &amp; Ketentuan</a>
                     <a href="#bantuan" class="transition hover:text-slate-300">Kebijakan Privasi</a>

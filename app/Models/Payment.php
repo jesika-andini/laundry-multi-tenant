@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Support\TenantContext;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -11,7 +12,7 @@ class Payment extends Model
     protected $fillable = [
         'order_id',
         'amount',
-        'method',
+        'payment_method',
         'status',
         'paid_at',
         'transaction_reference',
@@ -21,10 +22,11 @@ class Payment extends Model
     {
         static::addGlobalScope('tenant', function (Builder $builder) {
             $builder->whereHas('order', function (Builder $query) {
-                $context = app(\App\Support\TenantContext::class);
+                $context = app(TenantContext::class);
 
-                if (!$context->hasTenant()) {
+                if (! $context->hasTenant()) {
                     $query->whereRaw('1 = 0');
+
                     return;
                 }
 

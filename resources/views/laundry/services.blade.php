@@ -11,7 +11,7 @@
             'https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?auto=format&fit=crop&w=600&q=80',
             'https://images.unsplash.com/photo-1626806819282-2c1dc01a5e0c?auto=format&fit=crop&w=600&q=80',
         ];
-        $areaName = filled($location) ? $location : 'Jakarta Selatan';
+        $areaName = filled($location) ? $location : 'Ketapang, Banyuwangi';
         $ratingFor = fn ($tenant) => number_format(4.4 + (($tenant->id * 3) % 6) / 10, 1, ',', '.');
         $reviewsFor = fn ($tenant) => number_format(310 + (($tenant->id * 97) % 1200), 0, ',', '.');
         $distanceFor = fn ($tenant) => number_format(0.8 + (($tenant->id * 7) % 42) / 10, 1, ',', '');
@@ -195,8 +195,8 @@
                                 class="mt-3 h-1.5 w-full cursor-pointer appearance-none rounded-full bg-slate-200 accent-blue-600"
                             >
                             <div class="mt-1.5 flex items-center justify-between text-[10px] font-semibold text-slate-400">
-                                <span>Rp6.000</span>
-                                <span>Rp{{ number_format((int) (($maxPriceOption + 6000) / 2), 0, ',', '.') }}</span>
+                                <span>Rp4.000</span>
+                                <span>Rp{{ number_format((int) (($maxPriceOption + 4000) / 2), 0, ',', '.') }}</span>
                                 <span>Rp{{ number_format($maxPriceOption, 0, ',', '.') }}+</span>
                             </div>
                         </div>
@@ -209,7 +209,7 @@
                     <div class="flex items-center justify-between gap-2 px-4 pt-4">
                         <h2 class="flex items-center gap-1.5 text-xs font-extrabold text-slate-900">
                             <svg class="h-4 w-4 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/></svg>
-                            Peta Sekitar {{ filled($location) ? $location : 'Ketapang' }}
+                            Peta Sekitar {{ filled($location) ? $location : 'Ketapang, Banyuwangi' }}
                         </h2>
                         <span class="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-bold text-slate-500">{{ $tenants->total() }} Titik</span>
                     </div>
@@ -228,7 +228,6 @@
                     <div class="flex flex-wrap gap-3 px-4 py-3 text-[10px] font-semibold text-slate-500">
                         <span class="inline-flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span>Buka Sekarang</span>
                         <span class="inline-flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-rose-500"></span>Tutup</span>
-                        <span class="inline-flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-blue-600"></span>Antar Jemput</span>
                     </div>
                 </div>
             </aside>

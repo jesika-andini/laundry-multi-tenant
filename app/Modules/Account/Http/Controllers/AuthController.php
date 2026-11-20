@@ -40,7 +40,7 @@ class AuthController extends Controller
         $request->session()->regenerate();
 
         return redirect()->route('customer.home')
-            ->with('success', 'Akun berhasil dibuat. Selamat datang di LaundryHub.');
+            ->with('success', 'Akun berhasil dibuat. Selamat datang di LaundryMap.');
     }
 
     public function login(Request $request): RedirectResponse
@@ -75,6 +75,6 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('customer.home')
-            ->with('success', 'Kamu berhasil keluar dari LaundryHub.');
+            ->with('success', 'Kamu berhasil keluar dari LaundryMap.');
     }
 }
