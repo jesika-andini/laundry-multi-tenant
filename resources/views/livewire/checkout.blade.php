@@ -39,12 +39,13 @@
                     </div>
 
                     <p class="mt-4 rounded-xl bg-blue-50 px-4 py-3 text-[11px] leading-5 text-blue-700">
-                        Simpan kode pesanan ini. Tim {{ $tenant->name }} akan memverifikasi pembayaran dan segera memproses cucianmu.
+                        Simpan kode pesanan ini. Pantau setiap tahap cucian dan hubungi mitra langsung dari halaman pelacakan pesanan.
                     </p>
 
                     <div class="mt-5 flex flex-col gap-2 sm:flex-row">
-                        <a href="{{ route('customer.home') }}" class="inline-flex flex-1 items-center justify-center rounded-xl bg-blue-700 px-4 py-3 text-sm font-bold text-white transition hover:bg-blue-800">Kembali ke Beranda</a>
-                        <a href="{{ route('customer.tenant.show', $tenant) }}" class="inline-flex flex-1 items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-50">Lihat Detail Mitra</a>
+                        <a href="{{ $orderId ? route('customer.orders.show', $orderId) : route('customer.orders.index') }}" class="inline-flex flex-1 items-center justify-center rounded-xl bg-blue-700 px-4 py-3 text-sm font-bold text-white transition hover:bg-blue-800">Lacak Pesanan</a>
+                        <a href="{{ route('customer.home') }}" class="inline-flex flex-1 items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-50">Kembali ke Beranda</a>
+                        <a href="{{ route('customer.tenant.show', $tenant) }}" class="inline-flex flex-1 items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-50">Detail Mitra</a>
                     </div>
                 </div>
             </div>
@@ -114,13 +115,19 @@
                             <label class="text-[10px] font-extrabold uppercase tracking-[0.12em] text-slate-400">Paket Perawatan Pakaian</label>
                             <div class="mt-2 space-y-2">
                                 @foreach ($services as $service)
-                                    <label class="flex cursor-pointer items-center gap-3 rounded-xl border p-3 transition {{ $serviceId === $service->id ? 'border-blue-400 bg-blue-50/50 ring-1 ring-blue-200' : 'border-slate-200 bg-white hover:border-blue-200' }}">
+                                    <label wire:key="checkout-service-{{ $service->id }}" class="flex cursor-pointer items-center gap-3 rounded-xl border p-3 transition {{ $serviceId === $service->id ? 'border-blue-400 bg-blue-50/50 ring-1 ring-blue-200' : 'border-slate-200 bg-white hover:border-blue-200' }}">
                                         <input type="radio" wire:model.live="serviceId" value="{{ $service->id }}" class="h-4 w-4 border-slate-300 text-blue-600 focus:ring-blue-500">
                                         <div class="grid h-9 w-9 shrink-0 place-items-center rounded-lg {{ $serviceId === $service->id ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-500' }}">
                                             <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="4" y="3" width="16" height="18" rx="3"/><circle cx="12" cy="14" r="4"/><path d="M8 7h.01M11 7h.01"/></svg>
                                         </div>
                                         <div class="min-w-0 flex-1">
-                                            <p class="text-sm font-extrabold text-slate-800">{{ $service->name }} <span class="ml-1 rounded bg-blue-600 px-1.5 py-0.5 text-[8px] font-extrabold text-white">Paling Populer</span></p>
+                                            <p class="text-sm font-extrabold text-slate-800">{{ $service->name }}
+                                                @if ($loop->first)
+                                                    <span class="ml-1 rounded bg-blue-600 px-1.5 py-0.5 text-[8px] font-extrabold text-white">Paling Populer</span>
+                                                @elseif ($serviceId === $service->id)
+                                                    <span class="ml-1 rounded bg-emerald-100 px-1.5 py-0.5 text-[8px] font-extrabold text-emerald-700">Dipilih</span>
+                                                @endif
+                                            </p>
                                             <p class="mt-0.5 text-[10px] text-slate-500">Estimasi Pengerjaan: {{ (int) ($service->estimated_duration ?? 2) }} Hari Kerja • Lipat Rapi &amp; Plastik Kedap</p>
                                         </div>
                                         <p class="shrink-0 text-sm font-extrabold text-blue-700">Rp{{ number_format((float) $service->price, 0, ',', '.') }} <span class="text-[9px] font-semibold text-slate-400">/ {{ strtolower($service->unit) === 'kg' ? 'kg' : 'item' }}</span></p>
@@ -313,7 +320,17 @@
                                         </span>
                                         <span class="min-w-0 flex-1">
                                             <span class="block text-[11px] font-extrabold text-slate-800">{{ $label }}</span>
-                                            <span class="block text-[9px] text-slate-400">{{ $value === 'qris' ? 'Verifikasi Otomatis Seketika' : ($value === 'cod' ? 'Bayar langsung ke kurir Laundry' : 'Verifikasi otomatis') }}</span>
+                                            <span class="block text-[9px] text-slate-400">
+                                                @if ($value === 'qris')
+                                                    QRIS Instant (BCA, Mandiri, GoPay, OVO)
+                                                @elseif ($value === 'va')
+                                                    BCA, Mandiri, BRI, BNI
+                                                @elseif ($value === 'ewallet')
+                                                    GoPay, DANA, ShopeePay
+                                                @else
+                                                    Bayar langsung ke kurir Laundry
+                                                @endif
+                                            </span>
                                         </span>
                                     </label>
                                 @endforeach

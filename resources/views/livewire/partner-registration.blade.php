@@ -144,7 +144,7 @@
                         <h2 class="mt-4 text-xl font-extrabold leading-snug">Kenapa bergabung jadi mitra?</h2>
                         <ul class="mt-4 space-y-3 text-xs text-blue-50/90">
                             @foreach ([
-                                'Penerimaan pembayaran Transfer Bank atau E-wallet',
+                                'Penerimaan pembayaran QRIS atau Tunai',
                                 'Notifikasi otomatis ke pelanggan',
                                 'Laporan omzet harian & stok detergen',
                                 'Outlet tampil di direktori LaundryMap',

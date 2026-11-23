@@ -31,6 +31,13 @@ class ResolveTenantContext
             $request->is('api/tenants/*/orders/*')
         ) {
             $tenantId = $request->route('tenant');
+        } elseif (
+            $request->user()
+            && in_array($request->user()->role, ['tenant', 'tenant_admin'], true)
+            && $request->user()->tenant_id !== null
+            && ($request->is('tenant') || $request->is('tenant/*'))
+        ) {
+            $tenantId = $request->user()->tenant_id;
         }
 
         if ($tenantId instanceof Tenant) {

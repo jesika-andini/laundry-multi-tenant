@@ -50,7 +50,7 @@
 
         $supportPhone = '0812-3456-7890';
         $supportEmail = 'cs@laundrymap.id';
-        $ordersUrl = auth()->check() ? route('customer.services') : route('customer.login');
+        $ordersUrl = auth()->check() ? route('customer.orders.index') : route('customer.login');
     @endphp
 
     <header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/95 backdrop-blur-xl">
@@ -69,8 +69,8 @@
             <nav class="hidden items-center gap-1 lg:flex">
                 <a href="{{ route('customer.home') }}" class="rounded-lg px-3 py-2 text-sm font-semibold transition {{ request()->routeIs('customer.home') ? 'text-blue-600' : 'font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600' }}">Beranda</a>
                 <a href="{{ route('customer.services') }}" class="rounded-lg px-3 py-2 text-sm font-semibold transition {{ request()->routeIs('customer.services') ? 'text-blue-600' : 'font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600' }}">Cari Laundry</a>
-                <a href="{{ $ordersUrl }}" class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50 hover:text-blue-600">Pesanan Saya</a>
-                <a href="{{ route('customer.home') }}#bantuan" class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50 hover:text-blue-600">Bantuan</a>
+                <a href="{{ $ordersUrl }}" class="rounded-lg px-3 py-2 text-sm font-semibold transition {{ request()->routeIs('customer.orders.*') ? 'text-blue-600' : 'font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600' }}">Pesanan Saya</a>
+                <a href="{{ route('customer.help') }}" class="rounded-lg px-3 py-2 text-sm font-semibold transition {{ request()->routeIs('customer.help') ? 'text-blue-600' : 'font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600' }}">Bantuan</a>
             </nav>
 
             <div class="ml-auto flex items-center gap-2 sm:gap-2.5">
@@ -144,8 +144,8 @@
             <div class="flex flex-col gap-1 text-sm font-semibold text-slate-600">
                 <a href="{{ route('customer.home') }}" class="rounded-lg px-3 py-2.5 hover:bg-slate-50 {{ request()->routeIs('customer.home') ? 'bg-blue-50 text-blue-600' : '' }}">Beranda</a>
                 <a href="{{ route('customer.services') }}" class="rounded-lg px-3 py-2.5 hover:bg-slate-50 {{ request()->routeIs('customer.services') ? 'bg-blue-50 text-blue-600' : '' }}">Cari Laundry</a>
-                <a href="{{ $ordersUrl }}" class="rounded-lg px-3 py-2.5 hover:bg-slate-50">Pesanan Saya</a>
-                <a href="{{ route('customer.home') }}#bantuan" class="rounded-lg px-3 py-2.5 hover:bg-slate-50">Bantuan</a>
+                <a href="{{ $ordersUrl }}" class="rounded-lg px-3 py-2.5 hover:bg-slate-50 {{ request()->routeIs('customer.orders.*') ? 'bg-blue-50 text-blue-600' : '' }}">Pesanan Saya</a>
+                <a href="{{ route('customer.help') }}" class="rounded-lg px-3 py-2.5 hover:bg-slate-50 {{ request()->routeIs('customer.help') ? 'bg-blue-50 text-blue-600' : '' }}">Bantuan</a>
                 @guest
                     <a href="{{ route('customer.login') }}" class="rounded-lg px-3 py-2.5 hover:bg-slate-50">Masuk</a>
                 @endguest
@@ -206,7 +206,7 @@
                 </div>
 
                 <div>
-                    <h3 class="text-xs font-extrabold uppercase tracking-[0.15em] text-slate-900">Pusat Bantuan</h3>
+                    <h3 class="text-xs font-extrabold uppercase tracking-[0.15em] text-slate-900"><a href="{{ route('customer.help') }}" class="transition hover:text-blue-600">Pusat Bantuan</a></h3>
                     <p class="mt-4 text-xs leading-6 text-slate-500">Butuh penanganan cepat pesanan Anda? Tim support LaundryMap siap membantu setiap hari.</p>
                     <a href="tel:{{ preg_replace('/[^0-9+]/', '', $supportPhone) }}" class="mt-4 inline-flex items-center gap-2 text-sm font-extrabold text-blue-600 transition hover:text-blue-700">
                         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h4l2 5-2.5 1.5a12 12 0 0 0 5 5L14 14l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 2 7a2 2 0 0 1 2-2Z"/></svg>

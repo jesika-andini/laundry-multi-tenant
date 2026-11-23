@@ -49,7 +49,7 @@
             'super_admin', 'admin' => 'Super Admin',
             default => 'Customer',
         };
-        $ordersUrl = auth()->check() ? route('customer.services') : route('customer.login');
+        $ordersUrl = auth()->check() ? route('customer.orders.index') : route('customer.login');
         $supportPhone = $tenants->first(fn ($tenant) => filled($tenant->phone))?->phone ?? '-';
         $supportEmail = $tenants->first(fn ($tenant) => filled($tenant->email))?->email ?? 'cs@laundry.id';
         $laundryPhotos = [
@@ -76,8 +76,8 @@
             <nav class="hidden items-center gap-1 lg:flex">
                 <a href="<?php echo e(route('customer.home')); ?>" class="rounded-lg px-3 py-2 text-sm font-semibold text-blue-600">Beranda</a>
                 <a href="<?php echo e(route('customer.services')); ?>" class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50 hover:text-blue-600">Cari Laundry</a>
-                <a href="<?php echo e(auth()->check() ? route('customer.services') : route('customer.login')); ?>" class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50 hover:text-blue-600">Pesanan Saya</a>
-                <a href="#bantuan" class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50 hover:text-blue-600">Bantuan</a>
+                <a href="<?php echo e(auth()->check() ? route('customer.orders.index') : route('customer.login')); ?>" class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50 hover:text-blue-600">Pesanan Saya</a>
+                <a href="<?php echo e(route('customer.help')); ?>" class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50 hover:text-blue-600">Bantuan</a>
             </nav>
 
             <div class="ml-auto flex items-center gap-2 sm:gap-2.5">
@@ -150,8 +150,8 @@
             <div class="flex flex-col gap-1 text-sm font-semibold text-slate-600">
                 <a href="<?php echo e(route('customer.home')); ?>" class="rounded-lg bg-blue-50 px-3 py-2.5 text-blue-600">Beranda</a>
                 <a href="<?php echo e(route('customer.services')); ?>" class="rounded-lg px-3 py-2.5 hover:bg-slate-50">Cari Laundry</a>
-                <a href="<?php echo e(auth()->check() ? route('customer.services') : route('customer.login')); ?>" class="rounded-lg px-3 py-2.5 hover:bg-slate-50">Pesanan Saya</a>
-                <a href="#bantuan" class="rounded-lg px-3 py-2.5 hover:bg-slate-50">Bantuan</a>
+                <a href="<?php echo e(auth()->check() ? route('customer.orders.index') : route('customer.login')); ?>" class="rounded-lg px-3 py-2.5 hover:bg-slate-50">Pesanan Saya</a>
+                <a href="<?php echo e(route('customer.help')); ?>" class="rounded-lg px-3 py-2.5 hover:bg-slate-50">Bantuan</a>
                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(auth()->guard()->guest()): ?>
                     <a href="<?php echo e(route('customer.login')); ?>" class="rounded-lg px-3 py-2.5 hover:bg-slate-50">Masuk</a>
                 <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
@@ -196,7 +196,7 @@
                                 </svg>
                                 Cari Laundry Terdekat
                             </a>
-                            <a href="<?php echo e(auth()->check() ? route('customer.services') : route('customer.login')); ?>" class="inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-white px-5 py-3.5 text-sm font-bold text-blue-700 shadow-sm transition hover:border-blue-300 hover:bg-blue-50">
+                            <a href="<?php echo e(auth()->check() ? route('customer.orders.index') : route('customer.login')); ?>" class="inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-white px-5 py-3.5 text-sm font-bold text-blue-700 shadow-sm transition hover:border-blue-300 hover:bg-blue-50">
                                 <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M6 7h12l1 13H5L6 7Z"/>
                                     <path d="M9 7a3 3 0 0 1 6 0"/>
@@ -340,7 +340,7 @@ unset($__split);
                         <span class="text-[10px] font-bold uppercase tracking-wide text-slate-400">Langkah 04</span>
                     </div>
                     <h3 class="mt-4 text-sm font-extrabold text-slate-900">Bayar Aman</h3>
-                    <p class="mt-2 text-xs leading-5 text-slate-500">Konfirmasi timbangan aktual via notifikasi digital, lalu bayar non-tunai dengan transfer bank atau E-wallet.</p>
+                    <p class="mt-2 text-xs leading-5 text-slate-500">Konfirmasi timbangan aktual via notifikasi digital, lalu bayar non-tunai dengan QRIS.</p>
                 </article>
 
                 <article class="group rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-950/5">
@@ -515,7 +515,7 @@ unset($__split);
                             Paket Tenant Map
                         </h3>
                         <ul class="mt-4 space-y-2.5 text-xs text-blue-50/90">
-                            <li class="flex items-center gap-2"><span class="grid h-4 w-4 place-items-center rounded-full bg-white/15"><svg class="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span>Penerimaan Pembayaran Transfer Bank atau E-wallet</li>
+                            <li class="flex items-center gap-2"><span class="grid h-4 w-4 place-items-center rounded-full bg-white/15"><svg class="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span>Penerimaan Pembayaran QRIS atau Tunai</li>
                             <li class="flex items-center gap-2"><span class="grid h-4 w-4 place-items-center rounded-full bg-white/15"><svg class="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span>Notifikasi Otomatis ke Pelanggan</li>
                             <li class="flex items-center gap-2"><span class="grid h-4 w-4 place-items-center rounded-full bg-white/15"><svg class="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span>Laporan Omzet Harian &amp; Stok Detergen</li>
                         </ul>
@@ -624,7 +624,7 @@ unset($__split);
                 </div>
 
                 <div>
-                    <h3 class="text-xs font-extrabold uppercase tracking-[0.15em] text-slate-900">Pusat Bantuan</h3>
+                    <h3 class="text-xs font-extrabold uppercase tracking-[0.15em] text-slate-900"><a href="<?php echo e(route('customer.help')); ?>" class="transition hover:text-blue-600">Pusat Bantuan</a></h3>
                     <p class="mt-4 text-xs leading-6 text-slate-500">Butuh penanganan cepat pesanan Anda? Tim support LaundryMap siap membantu setiap hari.</p>
                     <a href="tel:<?php echo e(preg_replace('/[^0-9+]/', '', $supportPhone)); ?>" class="mt-4 inline-flex items-center gap-2 text-sm font-extrabold text-blue-600 transition hover:text-blue-700">
                         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h4l2 5-2.5 1.5a12 12 0 0 0 5 5L14 14l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 2 7a2 2 0 0 1 2-2Z"/></svg>

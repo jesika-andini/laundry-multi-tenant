@@ -8,6 +8,8 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['title' => 'Dashboard Admin']); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
     <div>
         <h1 class="text-3xl font-bold">Dashboard Admin</h1>
         <p class="mt-2 text-slate-500">Pusat pengelolaan website LaundryMap.</p>

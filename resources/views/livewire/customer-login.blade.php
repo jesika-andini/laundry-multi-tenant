@@ -9,7 +9,7 @@
                 <p class="mt-3 text-sm leading-6 text-blue-50/85">Masuk untuk memantau pesanan, menyimpan outlet favorit, dan menikmati promo pelanggan LaundryMap.</p>
             </div>
             <ul class="mt-8 space-y-3 text-xs text-blue-50/90">
-                @foreach (['Pantau status cucian real-time', 'Riwayat pesanan tersimpan rapi', 'Pembayaran Transfer Bank atau E-wallet'] as $item)
+                @foreach (['Pantau status cucian real-time', 'Riwayat pesanan tersimpan rapi', 'Pembayaran QRIS atau Tunai'] as $item)
                     <li class="flex items-center gap-2">
                         <span class="grid h-4 w-4 place-items-center rounded-full bg-white/15">
                             <svg class="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>

@@ -2,11 +2,15 @@
 
 use App\Http\Controllers\HomeController;
 use App\Livewire\Checkout;
+use App\Livewire\CustomerHelp;
 use App\Livewire\CustomerLogin;
+use App\Livewire\CustomerOrders;
 use App\Livewire\CustomerRegister;
 use App\Livewire\LaundrySearch;
+use App\Livewire\OrderTracking;
 use App\Livewire\PartnerRegistration;
 use App\Livewire\TenantDetail;
+use App\Models\Order;
 use App\Modules\Account\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +27,29 @@ Route::get('/laundry/{tenant}', TenantDetail::class)->name('customer.tenant.show
 Route::get('/checkout/{tenant}', Checkout::class)
     ->middleware('auth')
     ->name('customer.checkout');
+
+// Daftar pesanan pelanggan dan pelacakan status pesanan.
+Route::get('/pesanan', CustomerOrders::class)
+    ->middleware('auth')
+    ->name('customer.orders.index');
+
+Route::get('/pesanan/{order}/invoice', function (int $order) {
+    $orderModel = Order::query()
+        ->withoutGlobalScope('tenant')
+        ->where('customer_id', auth()->id())
+        ->with(['tenant', 'service' => fn ($query) => $query->withoutGlobalScope('tenant')])
+        ->findOrFail($order);
+
+    return view('laundry.invoice', ['order' => $orderModel]);
+})->middleware('auth')->name('customer.orders.invoice');
+
+Route::get('/pesanan/{order}', OrderTracking::class)
+    ->middleware('auth')
+    ->whereNumber('order')
+    ->name('customer.orders.show');
+
+// Halaman bantuan publik dan formulir komplain pelanggan.
+Route::get('/bantuan', CustomerHelp::class)->name('customer.help');
 
 // Alias URL umum agar tautan lama /login dan /register tetap terhubung.
 Route::redirect('/login', '/masuk')->name('login');
@@ -44,10 +71,7 @@ Route::post('/keluar', [AuthController::class, 'logout'])
     ->middleware('auth')
     ->name('customer.logout');
 
-// Dashboard mitra. Fitur pengelolaan layanan/pesanan dapat ditambahkan pada modul berikutnya.
-Route::get('/tenant/dashboard', function () {
-    return view('portals.tenant');
-})->middleware(['auth', 'role:tenant'])->name('tenant.dashboard');
+// Dashboard mitra dikelola oleh modul Dashboard dengan guard role tenant/tenant_admin.
 
 // Dashboard Admin memakai autentikasi dan role Admin yang sama dengan CRUD tenant.
 Route::get('/admin', function () {

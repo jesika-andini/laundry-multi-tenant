@@ -50,7 +50,7 @@ class AuthController extends Controller
             'password' => ['required', 'string'],
         ]);
 
-        if (!Auth::attempt($credentials, $request->boolean('remember'))) {
+        if (! Auth::attempt($credentials, $request->boolean('remember'))) {
             return back()
                 ->withErrors(['email' => 'Email atau password salah.'])
                 ->onlyInput('email');
@@ -61,7 +61,7 @@ class AuthController extends Controller
         $user = $request->user();
         $destination = match ($user->role) {
             'admin', 'super_admin' => route('admin.dashboard'),
-            'tenant' => route('tenant.dashboard'),
+            'tenant', 'tenant_admin' => route('tenant.dashboard'),
             default => route('customer.home'),
         };
 

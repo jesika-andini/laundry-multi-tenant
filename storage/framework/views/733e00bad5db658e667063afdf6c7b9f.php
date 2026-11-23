@@ -50,7 +50,7 @@
 
         $supportPhone = '0812-3456-7890';
         $supportEmail = 'cs@laundrymap.id';
-        $ordersUrl = auth()->check() ? route('customer.services') : route('customer.login');
+        $ordersUrl = auth()->check() ? route('customer.orders.index') : route('customer.login');
     ?>
 
     <header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/95 backdrop-blur-xl">
@@ -63,18 +63,18 @@
                         <path d="M8 6.5h.01M11 6.5h.01"/>
                     </svg>
                 </span>
-                <span class="text-lg font-extrabold tracking-tight text-slate-900">Laundry<span class="text-blue-600">Hub</span></span>
+                <span class="text-lg font-extrabold tracking-tight text-slate-900">Laundry<span class="text-blue-600">Map</span></span>
             </a>
 
             <nav class="hidden items-center gap-1 lg:flex">
                 <a href="<?php echo e(route('customer.home')); ?>" class="rounded-lg px-3 py-2 text-sm font-semibold transition <?php echo e(request()->routeIs('customer.home') ? 'text-blue-600' : 'font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600'); ?>">Beranda</a>
                 <a href="<?php echo e(route('customer.services')); ?>" class="rounded-lg px-3 py-2 text-sm font-semibold transition <?php echo e(request()->routeIs('customer.services') ? 'text-blue-600' : 'font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600'); ?>">Cari Laundry</a>
-                <a href="<?php echo e($ordersUrl); ?>" class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50 hover:text-blue-600">Pesanan Saya</a>
-                <a href="<?php echo e(route('customer.home')); ?>#bantuan" class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50 hover:text-blue-600">Bantuan</a>
+                <a href="<?php echo e($ordersUrl); ?>" class="rounded-lg px-3 py-2 text-sm font-semibold transition <?php echo e(request()->routeIs('customer.orders.*') ? 'text-blue-600' : 'font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600'); ?>">Pesanan Saya</a>
+                <a href="<?php echo e(route('customer.help')); ?>" class="rounded-lg px-3 py-2 text-sm font-semibold transition <?php echo e(request()->routeIs('customer.help') ? 'text-blue-600' : 'font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600'); ?>">Bantuan</a>
             </nav>
 
             <div class="ml-auto flex items-center gap-2 sm:gap-2.5">
-                <?php if(auth()->guard()->check()): ?>
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(auth()->guard()->check()): ?>
                     <span class="hidden items-center gap-1.5 rounded-full bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-700 sm:flex">
                         <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
                         <?php echo e($roleLabel); ?>
@@ -94,9 +94,9 @@
                             <path d="M6 7h12l1 13H5L6 7Z"/>
                             <path d="M9 7a3 3 0 0 1 6 0"/>
                         </svg>
-                        <?php if($activeOrderCount > 0): ?>
+                        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($activeOrderCount > 0): ?>
                             <span class="absolute -right-1 -top-1 grid h-5 min-w-[1.25rem] place-items-center rounded-full bg-blue-600 px-1 text-[10px] font-bold text-white ring-2 ring-white"><?php echo e($activeOrderCount); ?></span>
-                        <?php endif; ?>
+                        <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                     </a>
 
                     <details class="group relative">
@@ -109,13 +109,13 @@
                             <svg class="h-4 w-4 text-slate-400 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                         </summary>
                         <div class="absolute right-0 mt-2 w-44 overflow-hidden rounded-xl border border-slate-200 bg-white p-1 shadow-xl shadow-slate-900/10">
-                            <?php if($panelUrl): ?>
+                            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($panelUrl): ?>
                                 <a href="<?php echo e($panelUrl); ?>" class="flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-blue-600">
                                     <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
                                     Panel <?php echo e($roleSubtitle); ?>
 
                                 </a>
-                            <?php endif; ?>
+                            <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                             <a href="<?php echo e($ordersUrl); ?>" class="flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-blue-600">
                                 <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1 13H5L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
                                 Pesanan Saya
@@ -132,7 +132,7 @@
                 <?php else: ?>
                     <a href="<?php echo e(route('customer.login')); ?>" class="hidden rounded-full px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-blue-600 sm:block">Masuk</a>
                     <a href="<?php echo e(route('customer.register')); ?>" class="rounded-full bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800 sm:px-5">Daftar</a>
-                <?php endif; ?>
+                <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
                 <button type="button" id="mobile-menu-button" class="grid h-10 w-10 place-items-center rounded-full border border-slate-200 bg-white text-slate-600 lg:hidden" aria-label="Buka menu">
                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -146,21 +146,21 @@
             <div class="flex flex-col gap-1 text-sm font-semibold text-slate-600">
                 <a href="<?php echo e(route('customer.home')); ?>" class="rounded-lg px-3 py-2.5 hover:bg-slate-50 <?php echo e(request()->routeIs('customer.home') ? 'bg-blue-50 text-blue-600' : ''); ?>">Beranda</a>
                 <a href="<?php echo e(route('customer.services')); ?>" class="rounded-lg px-3 py-2.5 hover:bg-slate-50 <?php echo e(request()->routeIs('customer.services') ? 'bg-blue-50 text-blue-600' : ''); ?>">Cari Laundry</a>
-                <a href="<?php echo e($ordersUrl); ?>" class="rounded-lg px-3 py-2.5 hover:bg-slate-50">Pesanan Saya</a>
-                <a href="<?php echo e(route('customer.home')); ?>#bantuan" class="rounded-lg px-3 py-2.5 hover:bg-slate-50">Bantuan</a>
-                <?php if(auth()->guard()->guest()): ?>
+                <a href="<?php echo e($ordersUrl); ?>" class="rounded-lg px-3 py-2.5 hover:bg-slate-50 <?php echo e(request()->routeIs('customer.orders.*') ? 'bg-blue-50 text-blue-600' : ''); ?>">Pesanan Saya</a>
+                <a href="<?php echo e(route('customer.help')); ?>" class="rounded-lg px-3 py-2.5 hover:bg-slate-50 <?php echo e(request()->routeIs('customer.help') ? 'bg-blue-50 text-blue-600' : ''); ?>">Bantuan</a>
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(auth()->guard()->guest()): ?>
                     <a href="<?php echo e(route('customer.login')); ?>" class="rounded-lg px-3 py-2.5 hover:bg-slate-50">Masuk</a>
-                <?php endif; ?>
+                <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
             </div>
         </div>
     </header>
 
     <main class="min-h-[75vh]">
-        <?php if(session('success')): ?>
+        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(session('success')): ?>
             <div class="mx-auto mt-4 max-w-7xl px-5">
                 <div class="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700"><?php echo e(session('success')); ?></div>
             </div>
-        <?php endif; ?>
+        <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
         <?php echo e($slot); ?>
 
@@ -174,7 +174,7 @@
                         <span class="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-blue-600 via-blue-500 to-sky-400 text-white">
                             <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="3"/><circle cx="12" cy="13" r="4"/><path d="M8 6.5h.01M11 6.5h.01"/></svg>
                         </span>
-                        <span class="text-lg font-extrabold tracking-tight text-slate-900">Laundry<span class="text-blue-600">Hub</span></span>
+                        <span class="text-lg font-extrabold tracking-tight text-slate-900">Laundry<span class="text-blue-600">Map</span></span>
                     </a>
                     <p class="mt-4 max-w-xs text-xs leading-6 text-slate-500">Platform ekosistem laundry multi-tenant digital terpercaya di seluruh Indonesia. Wangi, higienis, dan tepat waktu.</p>
                     <div class="mt-5 flex items-center gap-2">
@@ -202,14 +202,14 @@
                 <div>
                     <h3 class="text-xs font-extrabold uppercase tracking-[0.15em] text-slate-900">Mitra &amp; Tenant</h3>
                     <ul class="mt-4 space-y-3 text-xs text-slate-500">
-                        <li><a href="<?php echo e(route('customer.register')); ?>" class="transition hover:text-blue-600">Portal Pemilik Outlet</a></li>
-                        <li><a href="<?php echo e(route('customer.register')); ?>" class="transition hover:text-blue-600">Pendaftaran Outlet Baru</a></li>
+                        <li><a href="<?php echo e(route('customer.partner.register')); ?>" class="transition hover:text-blue-600">Portal Pemilik Outlet</a></li>
+                        <li><a href="<?php echo e(route('customer.partner.register')); ?>" class="transition hover:text-blue-600">Pendaftaran Outlet Baru</a></li>
                         <li><a href="<?php echo e(route('customer.services')); ?>" class="transition hover:text-blue-600">Standarisasi SOP</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h3 class="text-xs font-extrabold uppercase tracking-[0.15em] text-slate-900">Pusat Bantuan</h3>
+                    <h3 class="text-xs font-extrabold uppercase tracking-[0.15em] text-slate-900"><a href="<?php echo e(route('customer.help')); ?>" class="transition hover:text-blue-600">Pusat Bantuan</a></h3>
                     <p class="mt-4 text-xs leading-6 text-slate-500">Butuh penanganan cepat pesanan Anda? Tim support LaundryMap siap membantu setiap hari.</p>
                     <a href="tel:<?php echo e(preg_replace('/[^0-9+]/', '', $supportPhone)); ?>" class="mt-4 inline-flex items-center gap-2 text-sm font-extrabold text-blue-600 transition hover:text-blue-700">
                         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h4l2 5-2.5 1.5a12 12 0 0 0 5 5L14 14l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 2 7a2 2 0 0 1 2-2Z"/></svg>

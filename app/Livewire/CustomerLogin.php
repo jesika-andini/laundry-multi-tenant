@@ -42,7 +42,7 @@ class CustomerLogin extends Component
 
         $destination = match (Auth::user()->role) {
             'admin', 'super_admin' => route('admin.dashboard'),
-            'tenant' => route('tenant.dashboard'),
+            'tenant', 'tenant_admin' => route('tenant.dashboard'),
             default => route('customer.home'),
         };
 

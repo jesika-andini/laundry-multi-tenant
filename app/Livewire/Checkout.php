@@ -51,6 +51,8 @@ class Checkout extends Component
 
     public string $orderCode = '';
 
+    public int $orderId = 0;
+
     public float $placedTotal = 0.0;
 
     public function mount(Tenant $tenant): void
@@ -186,8 +188,7 @@ class Checkout extends Component
         try {
             DB::transaction(function () use ($service, $total, $deliveryFee, $discount, $platformFee, $pickupAt, $orderCode): void {
                 $order = Order::create([
-                    'tenant_id' => $this->tenantId,
-                    'customer_id' => Auth::id(),
+                    'tenant_id' => $this->tenantId,                    'customer_id' => Auth::id(),
                     'service_id' => $service->id,
                     'order_code' => $orderCode,
                     'weight' => $this->weight,
@@ -205,6 +206,8 @@ class Checkout extends Component
                     'platform_fee' => $platformFee,
                     'voucher_code' => $this->appliedVoucher !== '' ? $this->appliedVoucher : null,
                 ]);
+
+                $this->orderId = $order->id;
 
                 Payment::create([
                     'order_id' => $order->id,
